@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="robot">
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.14107"
+        rpy="0 0 0" />
+      <mass
+        value="16.373" />
+      <inertia
+        ixx="0.43238"
+        ixy="0"
+        ixz="0"
+        iyy="0.40817"
+        iyz="0"
+        izz="0.72814" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5708 0 1.5708" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/base_link.dae" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.15"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.3" radius="0.25"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_link">
+    <inertial>
+      <origin
+        xyz="6.9389E-18 3.4694E-18 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.15708" />
+      <inertia
+        ixx="0.00010341"
+        ixy="0"
+        ixz="0"
+        iyy="0.00010341"
+        iyz="0"
+        izz="0.00019635" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 -0.01"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.02" radius="0.05"/>
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.01</mu>
+            <mu2>0.01</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+  <joint name="right_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.17 0.04"
+      rpy="1.5708 0.72267 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link name="left_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.15708" />
+      <inertia
+        ixx="0.00010341"
+        ixy="0"
+        ixz="0"
+        iyy="0.00010341"
+        iyz="0"
+        izz="0.00019635" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/left_wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.25098 0.25098 0.25098 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.01"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.02" radius="0.05"/>
+      </geometry>
+      <surface>
+        <friction>
+          <ode>
+            <mu>0.01</mu>
+            <mu2>0.01</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+  <joint name="left_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.17 0.04"
+      rpy="1.5708 0.44244 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link name="camera_link">
+    <inertial>
+      <origin
+        xyz="-0.0044236 1.4174E-05 -0.15054"
+        rpy="0 0 0" />
+      <mass
+        value="1.0" />
+      <inertia
+        ixx="0.11706"
+        ixy="0"
+        ixz="0"
+        iyy="0.11521"
+        iyz="0"
+        izz="0.099498" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/camera_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 -0.143.5"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder length="0.28" radius="0.125"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="camera_joint"
+    type="prismatic">
+    <origin
+      xyz="0 0 0.3935"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1.0"
+      effort="10000.0"
+      velocity="1.0" />
+  </joint>
+  <link name="front_scroll">
+    <inertial>
+      <origin
+        xyz="-2.7756E-17 7.2823E-19 -0.003375"
+        rpy="0 0 0" />
+      <mass
+        value="0.0015268" />
+      <inertia
+        ixx="3.2077E-08"
+        ixy="0"
+        ixz="0"
+        iyy="3.2077E-08"
+        iyz="0"
+        izz="4.9469E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/front_scroll.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.009"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="front_scroll_link"
+    type="fixed">
+    <origin
+      xyz="0.19 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_scroll" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link name="back_scroll">
+    <inertial>
+      <origin
+        xyz="-2.7756E-17 -3.8977E-18 -0.003375"
+        rpy="0 0 0" />
+      <mass
+        value="0.0015268" />
+      <inertia
+        ixx="3.2077E-08"
+        ixy="0"
+        ixz="0"
+        iyy="3.2077E-08"
+        iyz="0"
+        izz="4.9469E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot/meshes/back_scroll.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.009"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="back_scroll_link"
+    type="fixed">
+    <origin
+      xyz="-0.19 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_scroll" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="kinect_depth_frame">
+    <inertial>
+        <mass value="0.0001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                iyy="0.0001" iyz="0.0" 
+                izz="0.0001" />
+    </inertial>
+  </link>
+  <joint name="kinect_depth_joint" type="fixed">
+    <origin xyz="0 0.028 0" rpy="0 0 0" />
+    <parent link="camera_link" />
+    <child link="kinect_depth_frame" />
+  </joint>
+  <link name="kinect_depth_optical_frame">
+    <inertial>
+        <mass value="0.0001" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+                iyy="0.0001" iyz="0.0" 
+                izz="0.0001" />
+    </inertial>
+  </link>
+  <joint name="depth_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+    <parent link="kinect_depth_frame" />
+    <child link="kinect_depth_optical_frame" />
+  </joint>
+
+  <transmission name="camera_link_transmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="camera_joint">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="camera_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <legacyMode>false</legacyMode>
+      <alwaysOn>true</alwaysOn>
+      <updateRate>10</updateRate>
+      <leftJoint>left_joint</leftJoint>
+      <rightJoint>right_joint</rightJoint>
+      <wheelSeparation>0.36</wheelSeparation>
+      <wheelDiameter>0.1</wheelDiameter>
+      <wheelAcceleration>1.0</wheelAcceleration>
+      <wheelTorque>50</wheelTorque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishWheelTF>false</publishWheelTF>
+      <publishWheelJointState>true</publishWheelJointState>
+      <odometrySource>1</odometrySource>
+      <publishOdom>true</publishOdom>
+      <legacyMode>false</legacyMode>
+    </plugin>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/robot</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <gazebo reference="kinect_depth_frame">
+    <sensor name="camera" type="depth">
+      <always_on>1</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>   
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+        </clip>
+      </camera>
+      <plugin name="camera_controller" filename="libgazebo_ros_openni_kinect.so">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>20</updateRate>
+        <cameraName>camera</cameraName>
+        <imageTopicName>rgb/image_raw</imageTopicName>
+        <cameraInfoTopicName>rgb/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>depth/image_raw</depthImageTopicName>
+        <depthImageInfoTopicName>depth/camera_info</depthImageInfoTopicName>
+        <pointCloudTopicName>depth/points</pointCloudTopicName>
+        <frameName>kinect_depth_optical_frame</frameName>
+        <pointCloudCutoff>0.6</pointCloudCutoff>
+        <pointCloudCutoffMax>5.0</pointCloudCutoffMax>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0.4</hackBaseline>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+</robot>
